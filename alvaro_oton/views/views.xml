@@ -1,0 +1,57 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="alvaro_oton.list">
+      <field name="name">alvaroOton list</field>
+      <field name="model">alvaro_oton.task</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="descripcion"/>
+          <field name="fecha"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="alvaro_oton.action_window">
+      <field name="name">alvaroOton window</field>
+      <field name="res_model">alvaro_oton.task</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="alvaro_oton.action_server">
+      <field name="name">alvaroOton server</field>
+      <field name="model_id" ref="model_alvaro_oton_alvaro_oton"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="Manage" id="alvaro_oton.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Management" id="alvaro_oton.menu_1" parent="alvaro_oton.menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="Task" id="alvaro_oton.menu_1_list" parent="alvaro_oton.menu_1"
+              action="alvaro_oton.action_window"/>
+
+  </data>
+</odoo>
